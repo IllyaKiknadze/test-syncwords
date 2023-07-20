@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\EventController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('list', [EventController::class, 'index']);
+    Route::get('{id}', [EventController::class, 'show']);
+    Route::put('{id}', [EventController::class, 'update']);
+    Route::patch('{id}', [EventController::class, 'update']);
+    Route::delete('{id}', [EventController::class, 'destroy']);
 });
