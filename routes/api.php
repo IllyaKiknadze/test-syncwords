@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('get-token',function(){
+    dd(\App\Models\Organization::find(1)->createToken('auth')->plainTextToken);
+});
+
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('list', [EventController::class, 'index']);
     Route::get('{id}', [EventController::class, 'show']);
