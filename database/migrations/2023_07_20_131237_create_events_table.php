@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('title',200);
             $table->dateTime('start_date');
             $table->dateTime('end_date');
+            $table->integer('organization_id')->unsigned();
             $table->foreign('organization_id')->references('id')->on('organizations');
             $table->timestamps();
         });

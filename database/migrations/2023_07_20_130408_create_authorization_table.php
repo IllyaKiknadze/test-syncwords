@@ -13,6 +13,7 @@ return new class extends Migration {
         Schema::create('authorization', function (Blueprint $table) {
             $table->id();
             $table->string('token', 64)->unique();
+            $table->integer('organization_id')->unsigned();
             $table->foreign('organization_id')->references('id')->on('organizations');
             $table->timestamps();
         });
@@ -23,6 +24,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('personal_access_tokens');
+        Schema::dropIfExists('authorization');
     }
 };
