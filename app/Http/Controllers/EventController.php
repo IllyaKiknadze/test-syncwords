@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\EventRequest;
 use App\Http\Resources\EventResource;
 use App\Http\Services\EventService;
+use App\Models\Event;
 use Illuminate\Http\JsonResponse;
 
 class EventController extends Controller
@@ -31,10 +32,10 @@ class EventController extends Controller
         return response()->json(['message' => 'Not Found!'], 404);
     }
 
-    public function update(EventRequest $request): JsonResponse
+    public function update(int $eventId, EventRequest $request): JsonResponse
     {
        try {
-           if ($this->eventService->update($request->only('title', 'start_date', 'end_date'))) {
+           if ($this->eventService->update($request->only('title', 'start_date', 'end_date'),$eventId)) {
                return response()->json(['message' => 'success']);
            }
 

@@ -22,9 +22,9 @@ class EventService
         return $this->eventRepository->getOrganizationEvents($organizationId ?? $this->organizationId);
     }
 
-    public function update(array $updatedEvent, ?int $organizationId = null): bool
+    public function update(array $updatedEvent,int $eventId, ?int $organizationId = null): bool
     {
-        return $this->eventRepository->update($updatedEvent, $organizationId ?? $this->organizationId);
+        return $this->eventRepository->update($updatedEvent,$eventId, $organizationId ?? $this->organizationId);
     }
 
     public function getEvent(int $eventId, ?int $organizationId = null): Model|Collection|Event|Builder|array|null
