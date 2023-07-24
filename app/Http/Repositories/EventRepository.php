@@ -14,9 +14,10 @@ class EventRepository
         return Event::where('organization_id', $organizationId)->get();
     }
 
-    public function update(array $updatedEvent, int $organizationId): bool
+    public function update(array $updatedEvent, int $eventId, int $organizationId): bool
     {
-        return Event::where('organization_id', $organizationId)->update($updatedEvent);
+        return Event::where('organization_id', $organizationId)
+                    ->where('id', $eventId)->update($updatedEvent);
     }
 
     public function getEvent(int $eventId, int $organizationId): Model|Collection|Event|Builder|array|null

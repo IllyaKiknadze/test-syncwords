@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('get-token',function(){
-    dd(\App\Models\Organization::find(1)->createToken('auth')->plainTextToken);
+    return \App\Models\Organization::find(1)->createToken('auth')->plainTextToken;
 });
 
 Route::middleware('auth:sanctum')->group(function () {
